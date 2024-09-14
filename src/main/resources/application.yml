@@ -1,0 +1,26 @@
+spring:
+  # activiti7配置
+  activiti:
+    # 自动部署验证设置：true-开启（默认）、false-关闭
+    check-process-definitions: false
+    # 保存历史数据
+    history-level: full
+    # 检测历史表是否存在
+    db-history-used: true
+    # 关闭SpringAutoDeployment
+    deployment-mode: never-fail
+    # 对数据库中所有表进行更新操作，如果表不存在，则自动创建
+    database-schema-update: true
+    # 解决频繁查询SQL问题
+    async-executor-activate: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.116.51:3306/activiti?useUnicode=true&useSSL=false&serverTimezone=UTC&characterEncoding=UTF8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
+    username: root
+    password: Huawei12#$

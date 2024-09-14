@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.activiti.mapper.LoginUserMapper">
+
+    <resultMap id="loginUser" type="com.example.activiti.domain.LoginUser">
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <collection property="authorities" ofType="org.springframework.security.core.authority.SimpleGrantedAuthority">
+            <result property="role" column="authoritation"/>
+        </collection>
+    </resultMap>
+    <select id="selectLoginUserByUserName" parameterType="java.lang.String" resultMap="loginUser">
+        select a.username as username, a.password as password, b.authoritation as authoritation
+        from login_user a
+        left join authority b
+        on a.username = b.username
+        where a.username = #{username}
+    </select>
+</mapper>
+
+
